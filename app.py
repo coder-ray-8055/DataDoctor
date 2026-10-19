@@ -25,7 +25,6 @@ TYPE_OPTIONS = [
     "Category",
 ]
 
-
 def inject_css(dark: bool) -> None:
     if dark:
         bg_primary = "#0f172a"
@@ -56,33 +55,180 @@ def inject_css(dark: bool) -> None:
         scrollbar_thumb = "#475569"
         scrollbar_track = "#1e293b"
     else:
-        bg_primary = "#ffffff"
-        bg_secondary = "#f8fafc"
-        bg_card = "#ffffff"
-        bg_sidebar = "#f1f5f9"
-        bg_input = "#f8fafc"
-        text_primary = "#1e293b"
-        text_secondary = "#475569"
-        text_muted = "#94a3b8"
-        accent = "#0d9488"
-        accent_hover = "#0f766e"
-        accent_bg = "rgba(13, 148, 136, 0.06)"
-        border_color = "#e2e8f0"
-        shadow = "0 1px 3px rgba(0,0,0,0.06)"
-        shadow_hover = "0 4px 12px rgba(0,0,0,0.10)"
-        metric_bg = "#f8fafc"
-        success_bg = "rgba(34,197,94,0.08)"
-        success_border = "#22c55e"
-        warning_bg = "rgba(250,204,21,0.10)"
-        warning_border = "#eab308"
-        error_bg = "rgba(239,68,68,0.08)"
-        error_border = "#ef4444"
-        info_bg = "rgba(56,189,248,0.08)"
-        info_border = "#0ea5e9"
-        df_header_bg = "#f1f5f9"
-        df_row_hover = "rgba(13, 148, 136, 0.04)"
-        scrollbar_thumb = "#cbd5e1"
-        scrollbar_track = "#f1f5f9"
+        bg_primary = "#e8ecf1"
+        bg_secondary = "#dfe4eb"
+        bg_card = "#f0f3f7"
+        bg_sidebar = "#d5dbe5"
+        bg_input = "#dce1e9"
+        text_primary = "#111318"
+        text_secondary = "#2d3242"
+        text_muted = "#4a5168"
+        accent = "#0b7a6f"
+        accent_hover = "#096259"
+        accent_bg = "rgba(11, 122, 111, 0.10)"
+        border_color = "#b0b9c6"
+        shadow = "0 1px 4px rgba(0,0,0,0.10), 0 0 1px rgba(0,0,0,0.06)"
+        shadow_hover = "0 6px 16px rgba(0,0,0,0.14)"
+        metric_bg = "#dfe4eb"
+        success_bg = "rgba(22,163,74,0.12)"
+        success_border = "#15803d"
+        warning_bg = "rgba(202,138,4,0.12)"
+        warning_border = "#a16207"
+        error_bg = "rgba(220,38,38,0.12)"
+        error_border = "#b91c1c"
+        info_bg = "rgba(2,132,199,0.12)"
+        info_border = "#0369a1"
+        df_header_bg = "#cdd4de"
+        df_row_hover = "rgba(11, 122, 111, 0.08)"
+        scrollbar_thumb = "#8893a4"
+        scrollbar_track = "#d5dbe5"
+
+    light_overrides = ""
+    if not dark:
+        light_overrides = f"""
+    
+    .stApp, .stApp * {{
+        color: {text_primary} !important;
+    }}
+    .stApp p, .stApp span, .stApp label, .stApp div, .stApp li, .stApp td, .stApp th,
+    .stApp summary, .stApp a, .stApp strong, .stApp em, .stApp b, .stApp i,
+    .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6 {{
+        color: {text_primary} !important;
+    }}
+
+    .stCaption, .stCaption *, [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] * {{
+        color: {text_muted} !important;
+    }}
+
+    [data-testid="stMetricLabel"], [data-testid="stMetricLabel"] * {{
+        color: {text_secondary} !important;
+    }}
+
+    .stDownloadButton > button, .stDownloadButton > button *,
+    .stButton > button, .stButton > button * {{
+        color: #ffffff !important;
+    }}
+
+    .stTabs [data-baseweb="tab"], .stTabs [data-baseweb="tab"] * {{
+        color: {text_secondary} !important;
+    }}
+    .stTabs [aria-selected="true"], .stTabs [aria-selected="true"] * {{
+        color: {accent} !important;
+    }}
+
+    section[data-testid="stSidebar"] .stCaption,
+    section[data-testid="stSidebar"] .stCaption *,
+    section[data-testid="stSidebar"] small {{
+        color: {text_muted} !important;
+    }}
+
+    .stSelectbox div[data-baseweb="select"] *,
+    [data-baseweb="popover"] *,
+    [data-baseweb="menu"] *,
+    [role="listbox"] *,
+    [role="option"] * {{
+        color: {text_primary} !important;
+    }}
+
+    section[data-testid="stSidebar"] {{
+        background: linear-gradient(180deg, #c9d1dd 0%, {bg_sidebar} 100%) !important;
+    }}
+
+    [data-testid="stMetric"] {{
+        background: {metric_bg} !important;
+        border-left: 3px solid {accent} !important;
+    }}
+
+    [data-testid="stExpander"]:hover {{
+        border-color: {border_color} !important;
+    }}
+
+    .stSelectbox > div > div {{
+        border: 1px solid {border_color} !important;
+        border-radius: 8px !important;
+    }}
+    .stSelectbox > div > div:focus-within {{
+        border-color: {accent} !important;
+        box-shadow: 0 0 0 2px rgba(11, 122, 111, 0.18) !important;
+    }}
+    .stTextInput > div > div > input {{
+        border: 1px solid {border_color} !important;
+        border-radius: 8px !important;
+    }}
+    .stTextInput > div > div > input:focus {{
+        border-color: {accent} !important;
+        box-shadow: 0 0 0 2px rgba(11, 122, 111, 0.18) !important;
+    }}
+
+    [data-testid="stFileUploader"] section {{
+        background: rgba(11, 122, 111, 0.06) !important;
+        border: 2px dashed #8e99a9 !important;
+    }}
+    [data-testid="stFileUploader"] section:hover {{
+        border-color: #8e99a9 !important;
+        background: rgba(11, 122, 111, 0.06) !important;
+    }}
+    [data-testid="stFileUploader"] section small,
+    [data-testid="stFileUploader"] section span {{
+        color: {text_secondary} !important;
+    }}
+
+    .stDownloadButton > button,
+    .stButton > button {{
+        background: linear-gradient(135deg, {accent} 0%, {accent_hover} 100%) !important;
+        box-shadow: 0 2px 6px rgba(11, 122, 111, 0.28) !important;
+    }}
+    .stDownloadButton > button:hover,
+    .stButton > button:hover {{
+        background: linear-gradient(135deg, {accent} 0%, {accent_hover} 100%) !important;
+        box-shadow: 0 2px 6px rgba(11, 122, 111, 0.28) !important;
+        transform: none !important;
+    }}
+
+    [data-testid="stMetric"]:hover {{
+        box-shadow: {shadow} !important;
+    }}
+
+    ::-webkit-scrollbar-thumb:hover {{
+        background: {scrollbar_thumb} !important;
+    }}
+
+    [data-testid="stDataFrame"] {{
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+    }}
+
+    div[data-testid="stAlert"] {{
+        border-radius: 10px !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+    }}
+    div[data-testid="stAlert"] p,
+    div[data-testid="stAlert"] span {{
+        color: {text_primary} !important;
+    }}
+
+    .stSlider [data-baseweb="slider"] div {{
+        background-color: {border_color} !important;
+    }}
+    .stSlider [role="slider"] {{
+        background-color: {accent} !important;
+        border-color: {accent} !important;
+    }}
+    .stSlider div[data-testid="stTickBarMin"],
+    .stSlider div[data-testid="stTickBarMax"] {{
+        color: {text_secondary} !important;
+    }}
+
+    .stCheckbox > label > div[data-testid="stCheckbox"] {{
+        border-color: {border_color} !important;
+    }}
+    .stToggle [data-testid="stToggle"] > label > div {{
+        border-color: {border_color} !important;
+    }}
+
+    [data-baseweb="tooltip"] *, [data-baseweb="popover"] * {{
+        color: {text_primary} !important;
+    }}
+    """
 
     css = f"""
     <style>
@@ -259,10 +405,11 @@ def inject_css(dark: bool) -> None:
     .stToggle label span {{
         color: {text_primary} !important;
     }}
+
+    {light_overrides}
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
-
 
 def load_data(file) -> pd.DataFrame:
     file.seek(0)
@@ -270,12 +417,10 @@ def load_data(file) -> pd.DataFrame:
         return pd.read_csv(file)
     return pd.read_excel(file)
 
-
 def row_label(idx) -> str:
     if isinstance(idx, (int, float)):
         return str(int(idx) + 2)
     return str(idx)
-
 
 def trim_text(df: pd.DataFrame):
     result = df.copy()
@@ -298,7 +443,6 @@ def trim_text(df: pd.DataFrame):
 
     return result, changes
 
-
 def collapse_spaces(df: pd.DataFrame):
     result = df.copy()
     changes = []
@@ -319,7 +463,6 @@ def collapse_spaces(df: pd.DataFrame):
             })
 
     return result, changes
-
 
 def detect_type(series: pd.Series, column_name: str) -> str:
     name = str(column_name).lower()
@@ -355,7 +498,6 @@ def detect_type(series: pd.Series, column_name: str) -> str:
 
     return "Text"
 
-
 def is_valid_email(value) -> bool:
     if pd.isna(value):
         return True
@@ -368,7 +510,6 @@ def is_valid_email(value) -> bool:
         )
     )
 
-
 def is_valid_phone(value) -> bool:
     if pd.isna(value):
         return True
@@ -377,7 +518,6 @@ def is_valid_phone(value) -> bool:
         return False
     digit_count = sum(c.isdigit() for c in value)
     return 7 <= digit_count <= 15
-
 
 def is_valid_url(value) -> bool:
     if pd.isna(value):
@@ -389,7 +529,6 @@ def is_valid_url(value) -> bool:
             value,
         )
     )
-
 
 def fill_missing_values(df: pd.DataFrame, strategy: str) -> tuple:
     result = df.copy()
@@ -435,7 +574,6 @@ def fill_missing_values(df: pd.DataFrame, strategy: str) -> tuple:
 
     return result, fill_changes
 
-
 def compute_column_stats(df: pd.DataFrame) -> pd.DataFrame:
     stats = []
     for col in df.columns:
@@ -459,7 +597,6 @@ def compute_column_stats(df: pd.DataFrame) -> pd.DataFrame:
             entry["Median"] = ""
         stats.append(entry)
     return pd.DataFrame(stats)
-
 
 def flag_outliers_iqr(df: pd.DataFrame, column_types: dict, repair: bool):
     result = df.copy()
@@ -503,13 +640,11 @@ def flag_outliers_iqr(df: pd.DataFrame, column_types: dict, repair: bool):
 
     return result, issues, changes
 
-
 def to_excel_bytes(df: pd.DataFrame) -> bytes:
     buffer = BytesIO()
     with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
         df.to_excel(writer, index=False, sheet_name="CleanedData")
     return buffer.getvalue()
-
 
 with st.sidebar:
     st.markdown("## 🩺 DataDoctor")
